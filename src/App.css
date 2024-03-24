@@ -36,3 +36,21 @@
         transform: rotate(360deg);
     }
 }
+
+.App {
+    background: url(https://img.freepik.com/free-photo/movie-background-collage_23-2149876016.jpg?w=740&t=st=1711313087~exp=1711313687~hmac=8391d7ad44a7026a3024b16de64946bc40c0ff2b2cb3a29cb96ff0fecade6cc3) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.App {
+    background: url(https://img.freepik.com/free-photo/movie-background-collage_23-2149876016.jpg?w=740&t=st=1711313087~exp=1711313687~hmac=8391d7ad44a7026a3024b16de64946bc40c0ff2b2cb3a29cb96ff0fecade6cc3) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}

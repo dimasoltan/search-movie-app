@@ -1,16 +1,17 @@
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import {Spinner} from "react-bootstrap";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const MovieApp = () => {
 
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState("");
     const [movies, setMovies] = useState([]);
 
-
-    //fetch the movie
     const fetchMovies = async (searchTerm) => {
         setLoading(true);
         setError(null);
@@ -21,13 +22,12 @@ const MovieApp = () => {
 
             const response = await axios.get(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`);
             if (response.data.Response === "True") {
-                //console.log(response.data);
                 setMovies(response.data.Search);
             } else {
                 setError(response.data.Error);
             }
         } catch (error) {
-            setError('An Error Occured While Fetching the Data:', error);
+            setError('An Error Occured While Fetching the Data:' + error);
         } finally {
             setLoading(false);
         }
@@ -35,17 +35,26 @@ const MovieApp = () => {
 
 
     return (
-        <div>
+        <Fragment>
+            <Header/>
 
-            <h1>My Movie</h1>
+            <div className="container-fluid">
 
-            <SearchBar onSearch={fetchMovies}/>
+                <SearchBar onSearch={fetchMovies}/>
 
-            {loading && <p>Loading....</p>}
-            {error && <p>{error}</p>}
+                {loading && (
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                )}
+                {error && <p className="text-danger fw-bold">{error}</p>}
 
-            <MovieList movies={movies}/>
-        </div>);
+                {!error && !loading && <MovieList movies={movies}/>}
+            </div>
+
+            <Footer/>
+        </Fragment>
+    );
 }
 
 export default MovieApp;

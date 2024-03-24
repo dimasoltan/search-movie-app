@@ -1,5 +1,7 @@
 import './App.css';
 import MovieApp from './components/MovieApp';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.js';
 
 function App() {
     return (

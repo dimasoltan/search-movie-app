@@ -1,4 +1,5 @@
 import {useState} from "react"
+import {Button, Form, InputGroup} from "react-bootstrap";
 
 
 const SearchBar = ({onSearch}) => {
@@ -11,13 +12,20 @@ const SearchBar = ({onSearch}) => {
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
-
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Search Movies....." value={searchTerm} onChange={handleChange}/>
-            <button type="submit">Search</button>
+        <form>
+            <InputGroup className="mb-3">
+                <Form.Control
+                    placeholder="Search Movies..."
+                    aria-label="Search Movies..."
+                    aria-describedby="basic-addon1"
+                    onChange={handleChange}
+                    onSubmit={handleSubmit}
+                />
+                <Button type="submit" onClick={handleSubmit}>Search</Button>
+            </InputGroup>
         </form>
     )
 }
